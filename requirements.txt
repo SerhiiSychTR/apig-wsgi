@@ -1,2 +1,3 @@
 Flask==1.1.1
 apig-wsgi==2.3.0
+aws-wsgi==0.2.3

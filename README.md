@@ -20,6 +20,7 @@ lambda_handler = make_lambda_handler(app)
 ### ALB Cloud Formation stack
 To create CloudFormation stack:
 ```bash
+cd zappa-overview
 sceptre create dev
 ```
 Creates Application Load Balancer, Lambda function, Role for lambda, 
