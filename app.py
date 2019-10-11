@@ -1,4 +1,3 @@
-# from apig_wsgi import make_lambda_handler
 import awsgi
 from flask import Flask, jsonify
 
@@ -15,8 +14,6 @@ def hello_world():
 def index():
     return jsonify(status=200, message='OK')
 
-
-# lambda_handler = make_lambda_handler(app)
 
 def lambda_handler(event, context):
     return awsgi.response(app, event, context)

@@ -1,19 +1,23 @@
 # Try to setup WSGI application
 
-### apig-wsig
-`make_lambda_handler` wraps Flask WSGI application and give's lambda 
+### aws_wsgi
+`awsgi.response()` wraps Flask WSGI application and give's lambda 
 compatible function on output
 ```python
-from apig_wsgi import make_lambda_handler
-from flask import Flask
+
+import awsgi
+from flask import Flask, jsonify
 
 app = Flask(__name__)
+app.debug = True
 
-@app.route('/browse/hello')
-def hello_world():
-    return 'Hello World!'
+@app.route('/')
+def index():
+    return jsonify(status=200, message='OK')
 
-lambda_handler = make_lambda_handler(app)
+def lambda_handler(event, context):
+    return awsgi.response(app, event, context)
+
 ```
 
 
@@ -36,7 +40,7 @@ make deploy lambda_name=retrieve_lambda_name_from_cloudformation_stack
 After deploying, ALB public domain name accessible, so you can test your app.
 Open http://{ALB_domain_name}/browse/hello
 
-http://apig-wsgi-alb-104503537.eu-central-1.elb.amazonaws.com/browse/hello - 
+http://apig-wsgi-alb-104503537.eu-central-1.elb.amazonaws.com/ - 
 already deployed example
 ### Run locally
 To run tests locally activate your virtualenv and do the following:
