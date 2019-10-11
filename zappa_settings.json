@@ -9,18 +9,6 @@
     "debug": true,
     "tags": {
       "test": "test"
-    },
-    "alb_enabled": true,
-    "alb_vpc_config": {
-      "CertificateArn": "arn:aws:acm:eu-central-1:197928842860:certificate/e1d59cb1-463a-4afe-a485-219c126d4a56",
-      "SubnetIds": [
-        "subnet-23e73349",
-        "subnet-568e8d2b",
-        "subnet-c8e7f185"
-      ],
-      "SecurityGroupIds": [
-        "sg-7431eb17"
-      ]
     }
   }
 }

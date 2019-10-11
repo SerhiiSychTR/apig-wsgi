@@ -13,7 +13,6 @@ libs: requirements.txt
 output.zip: libs
 	zip -r $@ *.py # zip all python source code into output.zip
 	cd $< &&  zip -rm ../$@ * # zip libraries installed in the libs dir into output.zip
-	rmdir libs
 
 
 deploy: output.zip
@@ -23,5 +22,6 @@ deploy: output.zip
 
 clean:
 	rm output.zip
+	rmdir libs
 
 all: deploy output.zip clean
