@@ -11,8 +11,6 @@ def index():
 @main_blueprint.route("/privacy/v1/request", methods=["POST"])
 def privacy_request():
     request_id = request.json["requestConfiguration"]["requestId"]
-
     if request_id == "test_ID":
         return jsonify({"response": "ok"})
-
-    return {"error": "Invalid requestId"}, 400
+    return jsonify({"error": "Invalid requestId"}), 400

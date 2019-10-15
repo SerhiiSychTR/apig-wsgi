@@ -1,0 +1,27 @@
+{
+  "requestConfiguration": {
+    "requestId": "",
+    "subTaskId": [],
+    "subjectType": {},
+    "dataPrivacyActId": {},
+    "assetInsightId": [],
+    "requestType": {}
+  },
+  "userData": {
+    "userName": "",
+    "firstName": "",
+    "middleName": "",
+    "lastName": "",
+    "suffix": "",
+    "emailAddress": "",
+    "country": "",
+    "zip": "",
+    "address": "",
+    "state": "",
+    "city": "",
+    "apartmentSuiteNumber": "",
+    "ssn": "",
+    "dateOfBirth": "",
+    "telephoneNumber": ""
+  }
+}
