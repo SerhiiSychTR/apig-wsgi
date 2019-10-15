@@ -2,3 +2,5 @@
 venv
 ssl
 **.pyc
+Pipfile.lock
+dev_dir
