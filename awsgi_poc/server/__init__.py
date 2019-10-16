@@ -6,7 +6,7 @@ from flask_restplus import Api
 from awsgi_poc.server.privacy.request_api import request_api
 
 api = Api()
-api.add_namespace(request_api, path='/privacy/v2')
+api.add_namespace(request_api, path="/privacy/v2")
 
 
 def create_app(script_info=None):
