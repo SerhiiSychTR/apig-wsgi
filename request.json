@@ -1,11 +1,11 @@
 {
   "requestConfiguration": {
     "requestId": "",
-    "subTaskId": [],
-    "subjectType": {},
-    "dataPrivacyActId": {},
-    "assetInsightId": [],
-    "requestType": {}
+    "subTaskId": "",
+    "subjectType": "",
+    "dataPrivacyActId": "",
+    "assetInsightId": "",
+    "requestType": ""
   },
   "userData": {
     "userName": "",
