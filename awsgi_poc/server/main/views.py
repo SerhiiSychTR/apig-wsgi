@@ -3,7 +3,7 @@ from flask import jsonify, Blueprint, request
 main_blueprint = Blueprint("main", __name__)
 
 
-@main_blueprint.route("/")
+@main_blueprint.route("/index")
 def index():
     return jsonify({"response": "ok"})
 
