@@ -25,8 +25,7 @@ def test_privacy_request_200(client, correct_request_body):
 
 def test_privacy_request_400_wrong_schema(client, request_body_wrong_schema):
     response = client.post(
-        url_for("privacy_request"),
-        json=request_body_wrong_schema,
+        url_for("privacy_request"), json=request_body_wrong_schema
     )
     assert response.status_code == 400
     assert response.json == {
@@ -38,11 +37,10 @@ def test_privacy_request_400_wrong_schema(client, request_body_wrong_schema):
 
 
 def test_privacy_request_400_wrong_request_id(
-        client, request_body_wrong_request_id
+    client, request_body_wrong_request_id
 ):
     response = client.post(
-        url_for("privacy_request"),
-        json=request_body_wrong_request_id,
+        url_for("privacy_request"), json=request_body_wrong_request_id
     )
     assert response.status_code == 400
     assert response.json == {"error": "wrong request id"}
@@ -60,8 +58,7 @@ class TestRequestResourceIT:
 
     def test_400_wrong_schema(self, client, request_body_wrong_schema):
         response = client.post(
-            url_for("privacy_request"),
-            json=request_body_wrong_schema,
+            url_for("privacy_request"), json=request_body_wrong_schema
         )
         assert response.status_code == 400
         assert response.json == {
@@ -73,8 +70,7 @@ class TestRequestResourceIT:
 
     def test_400_wrong_request_id(self, client, request_body_wrong_request_id):
         response = client.post(
-            url_for("privacy_request"),
-            json=request_body_wrong_request_id,
+            url_for("privacy_request"), json=request_body_wrong_request_id
         )
         assert response.status_code == 400
         assert response.json == {"error": "wrong request id"}
