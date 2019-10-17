@@ -17,7 +17,7 @@ def create_app(script_info=None):
     api.init_app(app)
 
     # register apis
-    from awsgi_poc.server.privacy import privacy_ns
+    from awsgi_poc.server.apis.privacy import privacy_ns
     api.add_namespace(privacy_ns, path="/privacy/v1")
 
     # shell context for flask cli

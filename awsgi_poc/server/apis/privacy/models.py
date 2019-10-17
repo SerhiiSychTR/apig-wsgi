@@ -1,6 +1,6 @@
 from flask_restplus import fields
 
-from awsgi_poc.server.privacy.namespace import privacy_ns
+from awsgi_poc.server.apis.privacy.namespace import privacy_ns
 
 privacy_request_model = privacy_ns.model(
     "PrivacyRequest",

@@ -1,8 +1,8 @@
 from flask import request
 from flask_restplus import Resource
 
-from awsgi_poc.server.privacy.namespace import privacy_ns
-from awsgi_poc.server.privacy.models import privacy_request_model
+from awsgi_poc.server.apis.privacy.namespace import privacy_ns
+from awsgi_poc.server.apis.privacy.models import privacy_request_model
 
 
 class Request(Resource):
