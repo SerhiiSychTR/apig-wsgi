@@ -1,15 +1,12 @@
-from flask import request
-from flask_restplus import Namespace, fields, Resource
+from flask_restplus import fields
 
-request_api = Namespace(
-    "privacy_request", description="Privacy request related operations"
-)
+from awsgi_poc.server.privacy.namespace import privacy_ns
 
-privacy_request_model = request_api.model(
+privacy_request_model = privacy_ns.model(
     "PrivacyRequest",
     {
         "requestConfiguration": fields.Nested(
-            request_api.model(
+            privacy_ns.model(
                 "requestConfiguration",
                 {
                     "requestId": fields.String(required=True),
@@ -23,7 +20,7 @@ privacy_request_model = request_api.model(
             required=True,
         ),
         "userData": fields.Nested(
-            request_api.model(
+            privacy_ns.model(
                 "userData",
                 {
                     "userName": fields.String(required=True),
@@ -47,18 +44,3 @@ privacy_request_model = request_api.model(
         ),
     },
 )
-
-
-@request_api.route("/request")
-class PrivacyRequest(Resource):
-    @request_api.expect(privacy_request_model, validate=True)
-    def post(self):
-        request_id = request.json["requestConfiguration"]["requestId"]
-        if request_id == "Cham":
-            return {"hello": "Cham"}
-        elif request_id == "Serhii":
-            return {"hello": "Serhii"}
-        elif request_id == "Ivan":
-            return {"hello": "Ivan"}
-
-        return {"error": "wrong request id"}, 400
