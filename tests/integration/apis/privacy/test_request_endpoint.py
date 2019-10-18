@@ -1,45 +1,70 @@
-import pytest
-
 from flask import url_for
 
+from tests.integration.base import FlaskAppTestCase
 
-@pytest.fixture
-def request_body_wrong_request_id(correct_request_body):
-    correct_request_body["requestConfiguration"]["requestId"] = ""
+
+def get_correct_request_body():
+    correct_request_body = {
+        "requestConfiguration": {
+            "requestId": "Cham",
+            "subTaskId": "",
+            "subjectType": "",
+            "dataPrivacyActId": "",
+            "assetInsightId": "",
+            "requestType": "",
+        },
+        "userData": {
+            "userName": "",
+            "firstName": "",
+            "middleName": "",
+            "lastName": "",
+            "suffix": "",
+            "emailAddress": "",
+            "country": "",
+            "zip": "",
+            "address": "",
+            "state": "",
+            "city": "",
+            "apartmentSuiteNumber": "",
+            "ssn": "",
+            "dateOfBirth": "",
+            "telephoneNumber": "",
+        },
+    }
     return correct_request_body
 
 
-@pytest.fixture
-def request_body_wrong_schema(correct_request_body):
-    correct_request_body["requestConfiguration"]["subTaskId"] = []
-    return correct_request_body
-
-
-class TestRequestResourceIT:
-    """The same tests in class style"""
-
-    def test_200(self, client, correct_request_body):
-        response = client.post(
-            url_for("privacy_request"), json=correct_request_body
+class RequestResourceIT(FlaskAppTestCase):
+    def test_200(self):
+        request_body = get_correct_request_body()
+        response = self.client.post(
+            url_for("privacy_request"), json=request_body
         )
-        assert response.status_code == 200
-        assert response.json == {"hello": "Cham"}
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json(), {"hello": "Cham"})
 
-    def test_400_wrong_schema(self, client, request_body_wrong_schema):
-        response = client.post(
-            url_for("privacy_request"), json=request_body_wrong_schema
+    def test_400_wrong_schema(self):
+        request_body = get_correct_request_body()
+        request_body["requestConfiguration"]["subTaskId"] = []
+
+        response = self.client.post(
+            url_for("privacy_request"), json=request_body
         )
-        assert response.status_code == 400
-        assert response.json == {
+        expected_response = {
             "errors": {
                 "requestConfiguration.subTaskId": "[] is not of type 'string'"
             },
             "message": "Input payload validation failed",
         }
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.get_json(), expected_response)
 
-    def test_400_wrong_request_id(self, client, request_body_wrong_request_id):
-        response = client.post(
-            url_for("privacy_request"), json=request_body_wrong_request_id
+    def test_400_wrong_request_id(self, ):
+        request_body = get_correct_request_body()
+        request_body["requestConfiguration"]["requestId"] = ""
+
+        response = self.client.post(
+            url_for("privacy_request"), json=request_body
         )
-        assert response.status_code == 400
-        assert response.json == {"error": "wrong request id"}
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.get_json(), {"error": "wrong request id"})

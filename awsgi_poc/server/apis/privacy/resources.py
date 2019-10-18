@@ -9,7 +9,7 @@ from awsgi_poc.server.apis.privacy import helper
 class Request(Resource):
     @privacy_ns.expect(privacy_request_model)
     def post(self):
-        request_id = request.json["requestConfiguration"]["requestId"]
+        request_id = request.get_json()["requestConfiguration"]["requestId"]
         response_data = helper.get_response_by_request_id(request_id)
         if response_data:
             return response_data, 200

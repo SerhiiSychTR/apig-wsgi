@@ -7,9 +7,8 @@ cli = FlaskGroup(create_app=create_app)
 
 
 @cli.command()
-def command_example():
+def test():
     """Command example."""
-    print("Command example")
 
 
 if __name__ == "__main__":
