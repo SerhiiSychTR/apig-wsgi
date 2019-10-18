@@ -1,7 +1,7 @@
 lambda_name=hello-world-apig-wsgi
 
 # Example:
-libs/: requirements.txt requirements-test.txt
+libs/: requirements.txt requirements-execute.txt
   $@   # refers to target: "libs/"
   $<   # refers to the first prerequisite: "requirements.txt"
   $^   # refers to all prerequisites: "requirements.txt requirements-test.txt"

@@ -17,10 +17,12 @@ def create_app(config=None):
             "APP_SETTINGS", "awsgi_poc.server.config.ProductionConfig"
         )
     app.config.from_object(app_settings)
+
     api.init_app(app)
 
     # register apis
     from awsgi_poc.server.apis.privacy import privacy_ns
+
     api.add_namespace(privacy_ns, path="/privacy/v1")
 
     # shell context for flask cli
