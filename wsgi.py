@@ -1,6 +1,6 @@
 import awsgi
 
-from awsgi_poc.server import create_app
+from awsgi_poc.server.factory import create_app
 
 app = create_app()
 
