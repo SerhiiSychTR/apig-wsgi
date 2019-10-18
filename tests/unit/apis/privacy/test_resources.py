@@ -14,7 +14,8 @@ class TestRequestResource:
         "awsgi_poc.server.apis.privacy.helper.get_response_by_request_id"
     )
     def test_200(
-            self, get_response_by_request_id_mock, client, partial_request_body,
+            self, get_response_by_request_id_mock, client,
+            partial_request_body,
 
     ):
         get_response_by_request_id_mock.return_value = {"hello": "Cham"}
@@ -28,7 +29,8 @@ class TestRequestResource:
         "awsgi_poc.server.apis.privacy.helper.get_response_by_request_id"
     )
     def test_400(
-            self, get_response_by_request_id_mock, client, partial_request_body
+            self, get_response_by_request_id_mock, client,
+            partial_request_body
     ):
         get_response_by_request_id_mock.return_value = {}
         response = client.post(
