@@ -59,7 +59,7 @@ class RequestResourceIT(FlaskAppTestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.get_json(), expected_response)
 
-    def test_400_wrong_request_id(self, ):
+    def test_400_wrong_request_id(self,):
         request_body = get_correct_request_body()
         request_body["requestConfiguration"]["requestId"] = ""
 

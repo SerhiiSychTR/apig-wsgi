@@ -4,12 +4,20 @@ from flask import url_for
 
 @pytest.fixture
 def privacy_request_body_wrong_schema(privacy_request_body):
+    """
+    Request body for PrivacyRequest endpoint with error in schema:
+    requestConfiguration.subTaskId has List instead ofSstring
+    """
     privacy_request_body["requestConfiguration"]["subTaskId"] = []
     return privacy_request_body
 
 
 @pytest.fixture
 def privacy_request_body_wrong_request_id(privacy_request_body):
+    """
+    Request body for PrivacyRequest endpoint with empty requestId:
+    allowed values for requestConfiguration.requestId: Serhii, Ivan, Cham
+    """
     privacy_request_body["requestConfiguration"]["requestId"] = ""
     return privacy_request_body
 

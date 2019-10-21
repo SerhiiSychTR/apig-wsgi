@@ -3,6 +3,7 @@ import pytest
 
 @pytest.fixture
 def privacy_request_body():
+    """Base request body for PrivacyRequest endpoint (POST method)"""
     request_body = {
         "requestConfiguration": {
             "requestId": "Cham",

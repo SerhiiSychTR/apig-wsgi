@@ -2,6 +2,14 @@ import pytest
 
 
 def pytest_collection_modifyitems(items):
+    """
+    auto marks for unit and integration tests according
+    to the following naming conventions:
+     unittests: files pattern *_test.py, class pattern "class *Test():"
+     integration: files pattern *_it.py, class pattern "class *IT():"
+    skip class pattern, if you using functional style of tests,
+     but files pattern still the same
+    """
     for item in items:
         nodeid_parts = item.nodeid.split("::")
 
