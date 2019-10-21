@@ -6,7 +6,7 @@ from flask import url_for
 def privacy_request_body_wrong_schema(privacy_request_body):
     """
     Request body for PrivacyRequest endpoint with error in schema:
-    requestConfiguration.subTaskId has List instead ofSstring
+    requestConfiguration.subTaskId has List instead of string
     """
     privacy_request_body["requestConfiguration"]["subTaskId"] = []
     return privacy_request_body

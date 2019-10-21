@@ -11,7 +11,7 @@ cli = FlaskGroup(create_app=create_app)
 @cli.command()
 def cov():
     """Runs the unit tests with coverage."""
-    os.system("coverage run -m pytest -m unit")
+    os.system("coverage run -m pytest tests/ -m unit")
     os.system("coverage html")
 
 
