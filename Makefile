@@ -1,7 +1,7 @@
 lambda_name=hello-world-apig-wsgi
 
 # Example:
-libs/: requirements.txt requirements-test.txt
+libs/: requirements.txt requirements-execute.txt
   $@   # refers to target: "libs/"
   $<   # refers to the first prerequisite: "requirements.txt"
   $^   # refers to all prerequisites: "requirements.txt requirements-test.txt"
@@ -11,6 +11,7 @@ libs: requirements.txt
 		pip install -r $< -t $@
 
 output.zip: libs
+	zip -r9 $@ ./awsgi_poc
 	zip -r $@ *.py # zip all python source code into output.zip
 	cd $< &&  zip -rm ../$@ * # zip libraries installed in the libs dir into output.zip
 
@@ -24,4 +25,4 @@ clean:
 	rm output.zip
 	rmdir libs
 
-all: deploy output.zip clean
+all: deploy clean

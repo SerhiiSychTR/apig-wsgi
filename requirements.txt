@@ -1,2 +1,23 @@
-Flask==1.1.1
-aws-wsgi==0.2.3
+-r requirements-execute.txt
+
+# testing packages
+pytest==5.2.1
+coverage==4.5.4
+## for unittest testing framework
+Flask-Testing==0.7.1
+## for pytest testing framework
+mock==3.0.5
+pytest-flask==0.15.0
+
+#Python linting
+flake8==3.7.8
+isort==4.3.21
+## flake8 plugins
+flake8-quotes==2.1.0
+flake8-comprehensions==1.4.1
+flake8-print==3.1.0
+flake8-mutable==1.2.0
+pep8-naming==0.8.2
+flake8-isort==2.7.0
+## code reformatter
+black==19.3b0

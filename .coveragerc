@@ -1,0 +1,11 @@
+[run]
+branch = True
+source = awsgi_poc
+omit =
+    *tests*
+    *__init__*
+
+[report]
+exclude_lines =
+    # Don't complain if tests don't hit abstract methods:
+    raise NotImplementedError
