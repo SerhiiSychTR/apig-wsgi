@@ -12,7 +12,7 @@ class RequestResourceTest:
     def test_200(self, get_response_by_request_id_mock, client):
         get_response_by_request_id_mock.return_value = {"hello": "Cham"}
         response = client.post(
-            url_for("privacy_request"), json=self.partial_request_body
+            url_for("privacy_request_list"), json=self.partial_request_body
         )
         assert response.status_code == 200
         assert response.get_json() == {"hello": "Cham"}
@@ -23,7 +23,7 @@ class RequestResourceTest:
     def test_400(self, get_response_by_request_id_mock, client):
         get_response_by_request_id_mock.return_value = {}
         response = client.post(
-            url_for("privacy_request"), json=self.partial_request_body
+            url_for("privacy_request_list"), json=self.partial_request_body
         )
         assert response.status_code == 400
         assert response.get_json() == {"error": "wrong request id"}

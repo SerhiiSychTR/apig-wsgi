@@ -25,14 +25,14 @@ def privacy_request_body_wrong_request_id(privacy_request_body):
 class RequestResourceIT:
     def test_200(self, privacy_request_body, client):
         response = client.post(
-            url_for("privacy_request"), json=privacy_request_body
+            url_for("privacy_request_list"), json=privacy_request_body
         )
         assert response.status_code == 200
         assert response.get_json() == {"hello": "Cham"}
 
     def test_400_wrong_schema(self, client, privacy_request_body_wrong_schema):
         response = client.post(
-            url_for("privacy_request"), json=privacy_request_body_wrong_schema
+            url_for("privacy_request_list"), json=privacy_request_body_wrong_schema
         )
         expected_response = {
             "errors": {
@@ -47,7 +47,7 @@ class RequestResourceIT:
         self, client, privacy_request_body_wrong_request_id
     ):
         response = client.post(
-            url_for("privacy_request"),
+            url_for("privacy_request_list"),
             json=privacy_request_body_wrong_request_id,
         )
         assert response.status_code == 400

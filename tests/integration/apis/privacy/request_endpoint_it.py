@@ -38,7 +38,7 @@ class RequestResourceIT(FlaskAppTestCase):
     def test_200(self):
         request_body = get_correct_request_body()
         response = self.client.post(
-            url_for("privacy_request"), json=request_body
+            url_for("privacy_request_list"), json=request_body
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.get_json(), {"hello": "Cham"})
@@ -48,7 +48,7 @@ class RequestResourceIT(FlaskAppTestCase):
         request_body["requestConfiguration"]["subTaskId"] = []
 
         response = self.client.post(
-            url_for("privacy_request"), json=request_body
+            url_for("privacy_request_list"), json=request_body
         )
         expected_response = {
             "errors": {
@@ -64,7 +64,7 @@ class RequestResourceIT(FlaskAppTestCase):
         request_body["requestConfiguration"]["requestId"] = ""
 
         response = self.client.post(
-            url_for("privacy_request"), json=request_body
+            url_for("privacy_request_list"), json=request_body
         )
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.get_json(), {"error": "wrong request id"})
