@@ -22,8 +22,11 @@ def create_app(config=None):
 
     # register apis
     from awsgi_poc.server.apis.privacy import privacy_ns
-
     api.add_namespace(privacy_ns, path="/privacy/v1")
+
+    # register blueprints
+    from awsgi_poc.server.apis.plain_privacy import privacy_blueprint
+    app.register_blueprint(blueprint=privacy_blueprint, url_prefix="/privacy/v1")
 
     # shell context for flask cli
     @app.shell_context_processor

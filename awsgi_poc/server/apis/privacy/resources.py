@@ -24,7 +24,7 @@ class RequestListApi(Resource):
 class RequestApi(Resource):
     def get(self, request_id):
         item = helper.get_request(request_id)
-        if request:
+        if item:
             return item.to_json(), 200
         return {}, 404
 
